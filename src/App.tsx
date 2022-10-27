@@ -5,17 +5,17 @@ import Task from "./Task/Task";
 
 function App() {
   const [tasks, setTasks] = useState([
-    {id: "000001task", text: "Create AddTaskForum component."},
-    {id: "000002task", text: "Create Task component."}
+    {id: "000001task", text: "Create AddTaskForum component.", done: false, color: ""},
+    {id: "000002task", text: "Create Task component.", done: false, color: ""}
   ]);
 
   const [currentTask, setCurrentTask] = useState({
-    id: "", text: ""
+    id: "", text: "", done: false, color: ""
   });
 
   const showTasks = tasks.map((task) => {
     return (
-      <Task key={task.id} text={task.text} removeTask={() => deleteTask(task.id)}/>
+      <Task key={task.id} text={task.text} removeTask={() => deleteTask(task.id)} done={task.done} changeColor={() => {setTaskState(task.id)}} color={task.color}/>
     )
   });
 
@@ -40,6 +40,23 @@ function App() {
         const index: number = allTasks.indexOf(task);
         allTasks.splice(index, 1);
       }
+      return allTasks;
+    });
+    return setTasks(allTasks);
+  }
+
+  const setTaskState = (id:string) => {
+    const allTasks = [...tasks];
+    allTasks.map(task => {
+      if (id === task.id) {
+        task.done = !task.done;
+        if (task.done) {
+          task.color = "red";
+        } else {
+          task.color = "";
+        }
+      }
+      return allTasks;
     });
     return setTasks(allTasks);
   }

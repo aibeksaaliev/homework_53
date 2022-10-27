@@ -4,12 +4,17 @@ import './Task.css';
 interface TaskProps extends React.PropsWithChildren {
   text: string;
   removeTask: React.MouseEventHandler;
+  done: boolean;
+  changeColor: React.ChangeEventHandler<HTMLInputElement>;
+  color: string;
 }
 
 const Task: React.FC<TaskProps> = (props) => {
+  let color: string = props.color;
   return (
-    <div className="task_box">
+    <div className="task_box" style={{background: color}}>
       <p className="task_text">{props.text}</p>
+      <input type="checkbox" checked={props.done} onChange={props.changeColor}/>
       <button className="delete_btn" type="submit" onClick={props.removeTask}>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3"
              viewBox="0 0 16 16">
