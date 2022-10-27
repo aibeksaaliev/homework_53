@@ -3,13 +3,14 @@ import './Task.css';
 
 interface TaskProps extends React.PropsWithChildren {
   text: string;
+  removeTask: React.MouseEventHandler;
 }
 
 const Task: React.FC<TaskProps> = (props) => {
   return (
     <div className="task_box">
       <p className="task_text">{props.text}</p>
-      <button className="delete_btn" type="submit">
+      <button className="delete_btn" type="submit" onClick={props.removeTask}>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3"
              viewBox="0 0 16 16">
           <path

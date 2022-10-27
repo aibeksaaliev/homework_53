@@ -15,7 +15,7 @@ function App() {
 
   const showTasks = tasks.map((task) => {
     return (
-      <Task key={task.id} text={task.text}/>
+      <Task key={task.id} text={task.text} removeTask={() => deleteTask(task.id)}/>
     )
   });
 
@@ -31,6 +31,17 @@ function App() {
     currentTaskCopy.id = new Date().toString();
     allTasks.push(currentTaskCopy);
     setTasks(allTasks);
+  }
+
+  const deleteTask = (id:string) => {
+    const allTasks = [...tasks];
+    allTasks.map(task => {
+      if (id === task.id) {
+        const index: number = allTasks.indexOf(task);
+        allTasks.splice(index, 1);
+      }
+    });
+    return setTasks(allTasks);
   }
 
   return (
