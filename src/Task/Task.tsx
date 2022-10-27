@@ -2,7 +2,6 @@ import React from "react";
 import './Task.css';
 
 interface TaskProps extends React.PropsWithChildren {
-  key: string;
   text: string;
 }
 
