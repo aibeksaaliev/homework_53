@@ -7,7 +7,7 @@ const AddTaskForm = () => {
       <input className="task_input" type="text" placeholder="Add a new task"/>
       <button className="add_btn" type="submit">Add</button>
     </form>
-  )
-}
+  );
+};
 
 export default AddTaskForm;

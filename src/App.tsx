@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import AddTaskForm from "./AddTaskForm/AddTaskForm";
+import Task from "./Task/Task";
 
 function App() {
   return (
     <div className="App">
       <AddTaskForm></AddTaskForm>
+      <Task key="asdf" text="asdf"/>
     </div>
   );
 }
