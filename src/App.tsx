@@ -25,9 +25,20 @@ function App() {
     setCurrentTask(currentTaskCopy);
   }
 
+  const saveCurrentTask = () => {
+    const currentTaskCopy = {...currentTask};
+    const allTasks = [...tasks];
+    currentTaskCopy.id = new Date().toString();
+    allTasks.push(currentTaskCopy);
+    setTasks(allTasks);
+  }
+
   return (
     <div className="App">
-      <AddTaskForm addInputValue={setCurrentTaskText}/>
+      <AddTaskForm addInputValue={setCurrentTaskText} addTask={(e) => {
+        e.preventDefault();
+        saveCurrentTask();
+      }}/>
       {showTasks}
     </div>
   );
