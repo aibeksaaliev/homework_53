@@ -28,7 +28,7 @@ function App() {
   const saveCurrentTask = () => {
     const currentTaskCopy = {...currentTask};
     const allTasks = [...tasks];
-    currentTaskCopy.id = new Date().toString();
+    currentTaskCopy.id = Date.now().toString();
     allTasks.push(currentTaskCopy);
     setTasks(allTasks);
   }
